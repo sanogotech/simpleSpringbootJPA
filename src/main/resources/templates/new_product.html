@@ -1,39 +1,68 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="utf-8" />
+<html>
+
+<head th:include="fragments/header :: head(title='SB Admin 2 - Forms')">
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
 <title>Create New Product</title>
 </head>
 <body>
-	<div align="center">
-		<h1>Create New Product</h1>
-		<br />
-		<form action="#" th:action="@{/crudsave}" th:object="${product}"
-			method="post">
 
-			<table border="0" cellpadding="10">
-				<tr>
-					<td>Product Name:</td>
-					<td><input type="text" th:field="*{name}" /></td>
-				</tr>
-				<tr>
-					<td>Brand:</td>
-					<td><input type="text" th:field="*{brand}" /></td>
-				</tr>
-				<tr>
-					<td>Made In:</td>
-					<td><input type="text" th:field="*{madein}" /></td>
-				</tr>
-				<tr>
-					<td>Price:</td>
-					<td><input type="text" th:field="*{price}" /></td>
-				</tr>								
-				<tr>
-					<td colspan="2"><button type="submit">Save</button> </td>
-				</tr>
-			</table>
-		</form>
+<div id="wrapper">
+
+	<div th:replace="fragments/header :: header">&nbsp;</div>
+
+		<div id="page-wrapper">
+		
+			<div align="center">
+				<h1>Create New Product</h1>
+				<br />
+				<form action="#" th:action="@{/crudsave}" th:object="${product}"
+					method="post">
+		
+					<table border="0" cellpadding="10">
+						<tr>
+							<td>Product Name:</td>
+							<td><input type="text" th:field="*{name}" /></td>
+						</tr>
+						<tr>
+							<td>Brand:</td>
+							<td><input type="text" th:field="*{brand}" /></td>
+						</tr>
+						<tr>
+							<td>Made In:</td>
+							<td><input type="text" th:field="*{madein}" /></td>
+						</tr>
+						<tr>
+							<td>Price:</td>
+							<td><input type="text" th:field="*{price}" /></td>
+						</tr>								
+						<tr>
+							<td colspan="2"><button type="submit">Save</button> </td>
+						</tr>
+					</table>
+				</form>
+			</div>
+
 	</div>
+	<!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+
+<div th:replace="fragments/footer :: jquery">JavaScript tags are
+		loaded here</div>
+	<div th:replace="fragments/footer :: bootsrtapjs">JavaScript tags
+		are loaded here</div>
+	<div th:replace="fragments/footer :: metisjs">JavaScript tags are
+		loaded here</div>
+	<div th:replace="fragments/footer :: sb-admin">JavaScript tags
+		are loaded here</div>
+
 </body>
 </html>
