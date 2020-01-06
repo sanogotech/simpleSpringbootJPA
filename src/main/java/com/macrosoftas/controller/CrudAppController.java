@@ -15,20 +15,20 @@ import com.macrosoftas.domain.Product;
 import com.macrosoftas.service.ProductService;
 
 @Controller
-public class AppController {
+public class CrudAppController {
 
 	@Autowired
 	private ProductService service; 
 	
-	@RequestMapping("/")
+	@RequestMapping("/crudindex")
 	public String viewHomePage(Model model) {
 		List<Product> listProducts = service.listAll();
 		model.addAttribute("listProducts", listProducts);
 		
-		return "index";
+		return "crudindex";
 	}
 	
-	@RequestMapping("/new")
+	@RequestMapping("/crudnew")
 	public String showNewProductPage(Model model) {
 		Product product = new Product();
 		model.addAttribute("product", product);
@@ -36,14 +36,14 @@ public class AppController {
 		return "new_product";
 	}
 	
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	@RequestMapping(value = "/crudsave", method = RequestMethod.POST)
 	public String saveProduct(@ModelAttribute("product") Product product) {
 		service.save(product);
 		
-		return "redirect:/";
+		return "redirect:/crudindex";
 	}
 	
-	@RequestMapping("/edit/{id}")
+	@RequestMapping("/crudedit/{id}")
 	public ModelAndView showEditProductPage(@PathVariable(name = "id") int id) {
 		ModelAndView mav = new ModelAndView("edit_product");
 		Product product = service.get(id);
@@ -52,9 +52,9 @@ public class AppController {
 		return mav;
 	}
 	
-	@RequestMapping("/delete/{id}")
+	@RequestMapping("/cruddelete/{id}")
 	public String deleteProduct(@PathVariable(name = "id") int id) {
 		service.delete(id);
-		return "redirect:/";		
+		return "redirect:/crudindex";		
 	}
 }
