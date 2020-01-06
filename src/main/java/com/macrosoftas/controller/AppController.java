@@ -1,4 +1,4 @@
-package net.codejava;
+package com.macrosoftas.controller;
 
 import java.util.List;
 
@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.macrosoftas.domain.Product;
+import com.macrosoftas.service.ProductService;
 
 @Controller
 public class AppController {
