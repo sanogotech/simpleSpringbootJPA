@@ -4,14 +4,27 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Product {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	private String brand;
 	private String madein;
 	private float price;
+	
+	@ManyToOne
+    @JoinColumn(name = "product_category_id")
+    private ProductCategory productCategory;
+	/*
+	 * @JoinColumn indicates the entity is the owner of the relationship: 
+	 * the corresponding table has a column with a foreign key to the referenced table.
+	 */
 
 	public Product() {
 	}
@@ -25,8 +38,12 @@ public class Product {
 		this.price = price;
 	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public Product(String name, ProductCategory category) {
+		this.name = name;
+        this.productCategory = category;
+	}
+
+
 	public Long getId() {
 		return id;
 	}
@@ -66,5 +83,15 @@ public class Product {
 	public void setPrice(float price) {
 		this.price = price;
 	}
+
+	public ProductCategory getProductCategory() {
+		return productCategory;
+	}
+
+	public void setProductCategory(ProductCategory productCategory) {
+		this.productCategory = productCategory;
+	}
+	
+	
 
 }
