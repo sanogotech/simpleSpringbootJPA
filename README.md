@@ -1,6 +1,7 @@
 # simpleSpringbootJPA
 
 ## Tutorials/Urls
+- https://www.oracle.com/technical-resources/articles/vasiliev-jpql.html
 - https://hellokoding.com/jpa-one-to-many-relationship-mapping-example-with-spring-boot-hsql/
 
 - https://dev.to/martinbelev/how-to-enable-junit-5-in-new-spring-boot-project-29a8
