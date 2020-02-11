@@ -1,22 +1,31 @@
 package com.macrosoftas.domain;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Product {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long prodId;
 	private String name;
 	private String brand;
 	private String madein;
 	private float price;
+	
+
+	 
+	
+	private Boolean available;
+
 	
 	@ManyToOne
     @JoinColumn(name = "product_category_id")
@@ -25,32 +34,44 @@ public class Product {
 	 * @JoinColumn indicates the entity is the owner of the relationship: 
 	 * the corresponding table has a column with a foreign key to the referenced table.
 	 */
+	
+	@OneToMany
+	private List<OrderLineItem>  orderLineItemList;
+	
+	@ManyToOne
+	private Supplier supplier;
 
 	public Product() {
 	}
 
-	public Product(Long id, String name, String brand, String madein, float price) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.brand = brand;
-		this.madein = madein;
-		this.price = price;
-	}
 
 	public Product(String name, ProductCategory category) {
 		this.name = name;
         this.productCategory = category;
 	}
 
+	
 
-	public Long getId() {
-		return id;
+	public Long getProdId() {
+		return prodId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+
+	public void setProdId(Long prodId) {
+		this.prodId = prodId;
 	}
+
+	
+
+	public List<OrderLineItem> getOrderLineItemList() {
+		return orderLineItemList;
+	}
+
+
+	public void setOrderLineItemList(List<OrderLineItem> orderLineItemList) {
+		this.orderLineItemList = orderLineItemList;
+	}
+
 
 	public String getName() {
 		return name;
@@ -91,7 +112,32 @@ public class Product {
 	public void setProductCategory(ProductCategory productCategory) {
 		this.productCategory = productCategory;
 	}
+
+	
+
+	
+	  public Supplier getSupplier() {
+		return supplier;
+	}
+
+
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
+	}
+
+
+	public Boolean getAvailable() { return available; }
+	  
+	  
+	  public void setAvailable(Boolean available) { this.available = available; }
+
+
+	
+
+
 	
 	
+
+	  
 
 }

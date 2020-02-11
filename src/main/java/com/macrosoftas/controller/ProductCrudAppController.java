@@ -2,6 +2,9 @@ package com.macrosoftas.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,16 +12,40 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.macrosoftas.domain.Product;
-import com.macrosoftas.service.ProductService;
+import com.macrosoftas.service.ProductServiceImpl;
 
 @Controller
-public class CrudAppController {
+public class ProductCrudAppController {
 
 	@Autowired
-	private ProductService service; 
+	private ProductServiceImpl service; 
+	
+	//  search/javaterm
+	@RequestMapping(value="/search/{searchTerm}")
+	public ModelAndView searchpath(@PathVariable("searchTerm") String pSearchTerm) {
+	    ModelAndView mav = new ModelAndView("search");
+
+	    mav.addObject("searchTerm", pSearchTerm);
+	    //mav.addObject("searchResult", sp.findTeamByName(pSearchTerm));   
+	    
+	    //TODO
+
+	    return mav;
+	}
+	
+	//  search?searchTerm=java 
+	@RequestMapping(value="/searchbyname")
+	public String searchparam(@RequestParam(value = "searchTerm", required = false) String pSearchTerm, Model model) {
+	   
+		List<Product> listProducts = service.searchByNameIgnoreCase(pSearchTerm);
+		model.addAttribute("listProducts", listProducts);
+		
+		return "crudindex";
+	}
 	
 	@RequestMapping("/crudindex")
 	public String viewHomePage(Model model) {

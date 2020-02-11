@@ -2,33 +2,20 @@ package com.macrosoftas.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.macrosoftas.domain.Product;
-import com.macrosoftas.repository.ProductRepository;
 
-@Service
-@Transactional
-public class ProductService {
-
-	@Autowired
-	private ProductRepository repo;
+public interface ProductService {
 	
-	public List<Product> listAll() {
-		return repo.findAll();
-	}
+	public List<Product> listAll();
 	
-	public void save(Product product) {
-		repo.save(product);
-	}
+	public List<Product> searchByName(String name);
 	
-	public Product get(long id) {
-		return repo.findById(id).get();
-	}
+	public List<Product> searchByNameIgnoreCase(String name);
 	
-	public void delete(long id) {
-		repo.deleteById(id);
-	}
+	
+	public void save(Product product);
+	
+	public Product get(long id);
+	
+	public void delete(long id);
 }

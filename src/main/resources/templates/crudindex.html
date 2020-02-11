@@ -19,6 +19,19 @@
 	<div th:replace="fragments/header :: header">&nbsp;</div>
 
 		<div id="page-wrapper">
+		
+				<div class="topnav">
+					  <a class="active" href="#home">Home</a>
+					  <a href="#about">About</a>
+					  <a href="#contact">Contact</a>
+					  <div class="search-container">
+					    <form action="/searchbyname">
+					      <input type="text" placeholder="Search..by ..name" name="searchTerm">
+					      <button type="submit"><i class="fa fa-search"></i></button>
+					    </form>
+					  </div>
+				</div>
+				
 					<div align="center">
 					    <h1>Product List</h1>
 					    <a href="crudnew">Create New Product</a>
@@ -37,15 +50,15 @@
 					        </thead>
 					        <tbody>
 					            <tr th:each="product : ${listProducts}">
-					            	<td th:text="${product.id}">Product ID</td>
+					            	<td th:text="${product.prodId}">Product ID</td>
 					                <td th:text="${product.name}">Name</td>
 					                <td th:text="${product.brand}">Brand</td>
 					                <td th:text="${product.madein}">Made in</td>
 					                <td th:text="${product.price}">Price</td>
 					                <td>
-					                	<a th:href="@{'/crudedit/' + ${product.id}}" class="btn btn-success custom-width">Edit</a>
+					                	<a th:href="@{'/crudedit/' + ${product.prodId}}" class="btn btn-success custom-width">Edit</a>
 					                	&nbsp;&nbsp;&nbsp;
-					                	<a th:href="@{'/cruddelete/' + ${product.id}}"  class="btn btn-danger custom-width">Delete</a>
+					                	<a th:href="@{'/cruddelete/' + ${product.prodId}}"  class="btn btn-danger custom-width">Delete</a>
 					                </td>
 					            </tr>
 					        </tbody>

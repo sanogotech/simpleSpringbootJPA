@@ -6,6 +6,25 @@
 
 - https://dev.to/martinbelev/how-to-enable-junit-5-in-new-spring-boot-project-29a8
 
+## HTML Form Elements
+
+Most form elements have been demonstrated. 
+* `<input type="text" ...`   // simple text field
+* `<textarea ...`     // multiline textarea
+* `<input type="datetime-local" ...`   // datetime field
+* `<input type="color" ...`   // color selector
+* `<input type="checkbox" ...`  // single checkbox
+* `<ul><li><input type="checkbox" ...`  // set of checkboxes
+* `<ul><li><input type="radio" ...` // set of mutually exclusive checkboxes.
+* `<select ...><option value=" ...` // dropdown list of values.
+
+## @ModelAttribute 
+
+Also demonstrate 2 usecases to apply @ModelAttribute...
+1. Pre-populating the Model with the set of values needed for multi-select form elements.
+    * example: selectable values for checkbox sets, radio sets, dropdown lists. 
+2. Application of the Command Pattern to represent the MVC state (the 'FormCommand' object).
+
 ## Definition
 
 * @Table maps the entity with the table. If no @Table is defined, the default value is used: the class name of the entity.
