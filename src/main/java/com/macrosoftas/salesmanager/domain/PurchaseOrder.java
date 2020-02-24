@@ -94,6 +94,61 @@ public class PurchaseOrder {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
+
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((customer == null) ? 0 : customer.hashCode());
+		result = prime * result + ((orderDateTime == null) ? 0 : orderDateTime.hashCode());
+		result = prime * result + ((orderLineItemList == null) ? 0 : orderLineItemList.hashCode());
+		result = prime * result + ((orderNumber == null) ? 0 : orderNumber.hashCode());
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PurchaseOrder other = (PurchaseOrder) obj;
+		if (customer == null) {
+			if (other.customer != null)
+				return false;
+		} else if (!customer.equals(other.customer))
+			return false;
+		if (orderDateTime == null) {
+			if (other.orderDateTime != null)
+				return false;
+		} else if (!orderDateTime.equals(other.orderDateTime))
+			return false;
+		if (orderLineItemList == null) {
+			if (other.orderLineItemList != null)
+				return false;
+		} else if (!orderLineItemList.equals(other.orderLineItemList))
+			return false;
+		if (orderNumber == null) {
+			if (other.orderNumber != null)
+				return false;
+		} else if (!orderNumber.equals(other.orderNumber))
+			return false;
+		return true;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "PurchaseOrder [orderNumber=" + orderNumber + ", orderDateTime=" + orderDateTime + ", customer="
+				+ customer + ", orderLineItemList=" + orderLineItemList + "]";
+	}
 	
 	
 	

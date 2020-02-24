@@ -36,12 +36,16 @@ public class PurchaseOrderRepositoryTest {
 		OrderLineItem orderLineItem1 =  new OrderLineItem();
 		orderLineItem1.setQuantity(2);
 		
+		//Add  orderLineItemList
+		purchaseOrder.setOrderLineItemList(orderLineItemList);
+		
 		 
 	 }
 	 
 	 @Test
 	 public  void  testSavePurchaseOrder() {
 		 
+		 PurchaseOrder purchaseOrderResult = purchaseOrderRepository.save(purchaseOrder);
 		 
 	 }
 
