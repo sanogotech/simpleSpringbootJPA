@@ -27,7 +27,10 @@ public class PurchaseOrderRepositoryTest {
 	 @Autowired
 	 private PurchaseOrderRepository  purchaseOrderRepository;
 	 
+	 
 	 PurchaseOrder purchaseOrder;
+	 
+
 
 	 @BeforeEach
 	 public  void initData() {
@@ -41,7 +44,7 @@ public class PurchaseOrderRepositoryTest {
 		List<OrderLineItem>   orderLineItemList = new ArrayList<OrderLineItem>();
 		OrderLineItem orderLineItem1 =  new OrderLineItem();
 		//
-		Product product = new Product();
+		 Product  	product = new Product();
 		product.setMadein("FR");
 		product.setAvailable(true);
 		product.setBrand("Louis Viton");
@@ -58,6 +61,21 @@ public class PurchaseOrderRepositoryTest {
 	 }
 	 
 	 @Test
+	 public  void  testFindByOrderLineItemList_Product() {
+		 
+		    PurchaseOrder purchaseOrderResult = purchaseOrderRepository.save(purchaseOrder);
+		 
+		 	assertNotNull(purchaseOrderResult);
+		 	
+		 	Product  productCurrent = purchaseOrderResult.getOrderLineItemList().get(0).getProduct();
+		 	
+			List<PurchaseOrder> purchaseOrderList = purchaseOrderRepository.findByOrderLineItemList_product(productCurrent);
+			
+			assertFalse(purchaseOrderList.isEmpty());
+			assertEquals("286932020fax22",  purchaseOrderList.get(0).getOrderNumber());
+	 }
+	 
+	 @Test
 	 public  void  testFindByOrderLineItemList_Product_Madein() {
 		 
 		    PurchaseOrder purchaseOrderResult = purchaseOrderRepository.save(purchaseOrder);
@@ -65,7 +83,7 @@ public class PurchaseOrderRepositoryTest {
 		 	assertNotNull(purchaseOrderResult);
 		 	
 		 	
-			List<PurchaseOrder> purchaseOrderList = purchaseOrderRepository.findByOrderLineItemList_Product_Madein("FR");
+			List<PurchaseOrder> purchaseOrderList = purchaseOrderRepository.findByOrderLineItemList_product_madein("FR");
 			
 			assertFalse(purchaseOrderList.isEmpty());
 			assertEquals("286932020fax22",  purchaseOrderList.get(0).getOrderNumber());
