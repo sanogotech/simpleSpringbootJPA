@@ -22,6 +22,7 @@ public class Customer {
 	
 	String  surname;
 	
+	@Column(unique=true)
 	String email;
 	
 	String phone;
