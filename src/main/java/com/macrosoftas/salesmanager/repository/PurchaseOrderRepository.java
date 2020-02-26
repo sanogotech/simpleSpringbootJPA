@@ -13,7 +13,7 @@ public interface PurchaseOrderRepository extends JpaRepository<PurchaseOrder, Lo
 	List<PurchaseOrder> findByOrderLineItemList_product(Product product);
 	
 	
-	List<PurchaseOrder> findByOrderLineItemList_product_madein(String madein);
+	List<PurchaseOrder> findByOrderLineItemList_Product_Madein(String madein);
 	
 	List<PurchaseOrder> findByCustomer_Email(String email);
 

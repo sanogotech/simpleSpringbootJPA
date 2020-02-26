@@ -26,10 +26,7 @@ public class ProductRepositoryTest {
 	 @Autowired
 	 private ProductCategoryRepository productCategoryRepository;
 
-	 @Test
-	 public void contextLoads() {
-		 
-	 }
+	
 	 
 	 @Test
 	 public  void  testSaveACoupleOfCategories() {

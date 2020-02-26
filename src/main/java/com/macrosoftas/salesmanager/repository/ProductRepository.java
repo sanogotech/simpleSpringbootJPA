@@ -21,6 +21,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	
 	//to perform a case-insensitive search to find all products with a given name.
 	 List<Product> findByNameIgnoreCase(String name);
+	 
+	 List<Product> findByMadeinIgnoreCase(String madein);
+	
 	
 	List<Product> findByNameIsNotNull();
 	
