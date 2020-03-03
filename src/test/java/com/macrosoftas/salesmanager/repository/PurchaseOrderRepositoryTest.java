@@ -113,12 +113,10 @@ public class PurchaseOrderRepositoryTest {
 	 public  void  testFindAllPurchaseOrder() {
 		 
 		    PurchaseOrder purchaseOrderResult = purchaseOrderRepository.save(purchaseOrder);
-		 
 		 	assertNotNull(purchaseOrderResult);
 		 	
 		 	List<PurchaseOrder> purchaseOrderList = purchaseOrderRepository.findAll();
-			
-		
+
 			assertFalse(purchaseOrderList.isEmpty());
 			assertEquals("286932020fax22",  purchaseOrderList.get(0).getOrderNumber());
 			//assertEquals("FR",  purchaseOrderList.get(0).getOrderLineItemList().get(0).getProduct().getMadein());
@@ -131,11 +129,9 @@ public class PurchaseOrderRepositoryTest {
 		 
 		 List<PurchaseOrder> purchaseOrderList = purchaseOrderRepository.findByCustomer_Email("test@gmail.com");
 		 
-		 
-		
-			assertFalse(purchaseOrderList.isEmpty());
-			assertEquals("286932020fax22",  purchaseOrderList.get(0).getOrderNumber());
-			//assertEquals("FR",  purchaseOrderList.get(0).getOrderLineItemList().get(0).getProduct().getMadein());
+		 assertFalse(purchaseOrderList.isEmpty());
+		 assertEquals("286932020fax22",  purchaseOrderList.get(0).getOrderNumber());
+	
 	 }
 
 
